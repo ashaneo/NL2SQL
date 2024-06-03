@@ -1,3 +1,8 @@
+from load_model_are_get_query.get_query import generate_query
+
+import os
+import sys
+
 def generate_single_create_table_sql(table_name, columns):
     sql = f"CREATE TABLE {table_name} ("     # Start the CREATE TABLE statement
 
@@ -30,6 +35,11 @@ def text_to_sql(table_data, question):
     return prompt
 
 
+def get_final_quert(table_data, question):
+    prompt = text_to_sql(table_data, question)
+    generated_sql = generate_query(prompt)
+
+
 if __name__ == '__main__':
     table_data = {
         "table1": {
@@ -46,4 +56,4 @@ if __name__ == '__main__':
 
     question = "What is the name of the person with id 1?"
 
-    print(text_to_sql(table_data, question))
+    (get_final_quert(table_data, question))
