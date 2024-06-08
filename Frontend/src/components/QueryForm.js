@@ -14,10 +14,10 @@ function QueryForm({ dbCredentials, setQueryResults }) {
         question,
       });
       setQueryResults(response.data);
-      setMessage("Query submitted successfully and results fetched.");
+      setMessage(<p>Query submitted successfully and results fetched</p>);
     } catch (error) {
       console.error("Failed to submit query or fetch results", error);
-      setMessage("Failed to submit query. Please try again.");
+      setMessage(<p>Failed to submit query. Please try again.</p>);
     }
   };
 
