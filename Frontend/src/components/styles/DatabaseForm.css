@@ -1,0 +1,77 @@
+.database-form {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  width: 90%; /* Set width to 90% of the viewport */
+  margin: 20px auto; /* Center the form horizontally and provide margin from top and bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+.database-form h2 {
+  color: #333;
+  margin-bottom: 20px; /* Space before the first input */
+  text-align: center; /* Centers the text horizontally */
+}
+
+.input-group {
+  margin-bottom: 15px; /* Space between each input group */
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px; /* Space between label and input */
+  font-weight: bold; /* Make labels bold */
+  color: #333;
+}
+
+.input-group input,
+.input-group .password-input input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in the element's width */
+}
+
+.password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.submit-button {
+  background-color: #4CAF50; /* Light green background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #dff0d8;
+  color: #3c763d;
+  border-radius: 4px;
+  text-align: center; /* Center text in message box */
+}
