@@ -1,0 +1,27 @@
+.query-results {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+    width: 90%; /* Set width to 90% of the viewport */
+    margin: 20px auto; /* Center the component horizontally and provide margin from top and bottom */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .query-results h2 {
+    color: #333;
+    margin-bottom: 20px; /* Space after the header */
+    text-align: center; /* Center the text horizontally */
+  }
+  
+  .query-results p {
+    font-size: 16px;
+    color: #666; /* Dark grey for text */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff; /* White background for the text block */
+  }
+  
