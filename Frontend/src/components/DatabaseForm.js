@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles/DatabaseForm.css"; // Ensure you have the eye icons available in your project, or use a package like Font Awesome
+import "./styles/DatabaseForm.css"; 
 
 function DatabaseForm({ setDbCredentials }) {
   const [credentials, setCredentials] = useState({

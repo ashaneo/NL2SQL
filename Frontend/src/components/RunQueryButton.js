@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles/RunQueryButton.css"; // Correct path to the CSS file
+import "./styles/RunQueryButton.css"; 
 
 function RunQueryButton() {
   const [isLoading, setIsLoading] = useState(false);

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles/QueryForm.css"; // Make sure the path to the CSS file is correct
+import "./styles/QueryForm.css";
 
 function QueryForm({ dbCredentials, setQueryResults }) {
   const [question, setQuestion] = useState("");
-  const [message, setMessage] = useState(null); // Initialize message as null
-  const [isLoading, setIsLoading] = useState(false); // State to track loading status
+  const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();

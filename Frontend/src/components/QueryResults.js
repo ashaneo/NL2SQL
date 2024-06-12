@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/QueryResults.css"; // Ensure this path matches your project structure
+import "./styles/QueryResults.css"; 
 
 function QueryResults({ results }) {
   return (
