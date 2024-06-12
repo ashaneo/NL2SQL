@@ -121,13 +121,16 @@ def get_all_table_names(cursor):
 
 
 def get_table_structure(cursor, table_name):
-    """Fetches the column names and data types for a given table and formats them."""
+    print(f"Fetching structure for table {table_name}")
     try:
         cursor.execute(f"DESCRIBE `{table_name}`")
         columns = cursor.fetchall()
         column_info = {}
         for column in columns:
+            print(f"Column: {column}")
+            print("debugginggg")
             column_name, column_type = column[0], column[1]
+            print(f"Column Name: {column_name}, Column Type: {column_type}")
             # Simplify column types to generic types like TEXT, INT, etc.
             if 'char' in column_type or 'text' in column_type:
                 column_type = 'TEXT'
@@ -139,7 +142,9 @@ def get_table_structure(cursor, table_name):
                 column_type = 'FLOAT'
             else:
                 column_type = 'OTHER'  # For other less common data types
+            print(f"cccColumn Name: {column_name}, Column Type: {column_type}")
             column_info[column_name] = column_type
+            print("DONEEEE")
         return column_info
     except Error as e:
         print(f"Error fetching structure for table {table_name}", e)
@@ -168,16 +173,26 @@ def generate_create_table_sql(table_data):
 
 
 def get_all_create_table_queries(host, port, dbname, user, password):
+    print("Connecting to database.....")
     conn, cursor = connect_to_db(host, port, dbname, user, password)
+
     if conn is None or cursor is None:
         return {}
 
+    print("Fetching Table Names...")
+
     table_names = get_all_table_names(cursor)
+
+    print(table_names)
+
     all_table_structures = {}
 
     for table_name in table_names:
         table_structure = get_table_structure(cursor, table_name)
         all_table_structures[table_name] = table_structure
+        print(f"Structure for table {table_name}: {table_structure}")
+
+    print(all_table_structures)
 
     cursor.close()
     conn.close()

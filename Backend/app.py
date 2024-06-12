@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify, session
-from flask_session import Session
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import logging
 
@@ -29,6 +28,7 @@ def intro():
 @app.route('/api/db_credentials', methods=['POST'])
 def save_create_table_queries():
     try:
+        print("Started saving credentials")
         data = request.json
 
         query_store['db_credentials'] = data
@@ -114,6 +114,7 @@ def run_query():
     finally:
         cursor.close()
         conn.close()
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

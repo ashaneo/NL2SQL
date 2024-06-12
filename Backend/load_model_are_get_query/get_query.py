@@ -41,7 +41,6 @@ def generate_query(prompt):
 
     return generated_sql
 
-
 # This is only to test this script individually
 if __name__ == '__main__':
     prompt = "tables:\ntable1: column1 TEXT, column2 TEXT, column3 TEXT\ntable2: column1 TEXT, column2 TEXT, column3 TEXT\nquery for: What is the name of the person with id 1?"
