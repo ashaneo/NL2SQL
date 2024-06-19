@@ -15,9 +15,6 @@ except ImportError as e:
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-# Temporary store
-query_store = {}
-
 
 @app.route('/')
 @cross_origin()
@@ -27,6 +24,9 @@ def intro():
 
 @app.route('/api/db_credentials', methods=['POST'])
 def save_create_table_queries():
+    # Temporary store
+    global query_store
+    query_store = {}
     try:
         print("Started saving credentials")
         data = request.json
