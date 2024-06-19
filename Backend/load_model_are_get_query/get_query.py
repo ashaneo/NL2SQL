@@ -4,9 +4,9 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 def load_model_and_tokenizer():
     tokenizer = T5Tokenizer.from_pretrained(
-        'C:/Users/DELL/Desktop/Projects/2. NL2SQL/NL2SQL/Backend/model_and_tokenizer/tokenizer-final')
+        './model_and_tokenizer/tokenizer-final')
     model = T5ForConditionalGeneration.from_pretrained(
-        'C:/Users/DELL/Desktop/Projects/2. NL2SQL/NL2SQL/Backend/model_and_tokenizer/model-final')
+        './model_and_tokenizer/model-final')
     return tokenizer, model
 
 
@@ -41,7 +41,9 @@ def generate_query(prompt):
 
     return generated_sql
 
+
 # This is only to test this script individually
 if __name__ == '__main__':
     prompt = "tables:\ntable1: column1 TEXT, column2 TEXT, column3 TEXT\ntable2: column1 TEXT, column2 TEXT, column3 TEXT\nquery for: What is the name of the person with id 1?"
-    generate_query(prompt)
+    query = generate_query(prompt)
+    print(query)
