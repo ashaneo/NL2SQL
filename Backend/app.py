@@ -9,6 +9,7 @@ logging.basicConfig(level=logging.DEBUG)
 try:
     from get_db_tables_lib import get_all_create_table_queries, connect_to_db
     from text_to_sql_lib import get_final_query
+    from databse import NL2SQLDatabase
 except ImportError as e:
     logging.error("Error importing get_db_tables_lib: %s", e)
 
@@ -22,7 +23,7 @@ def intro():
     return 'Text to SQL Application!'
 
 
-@app.route('/api/db_credentials', methods=['POST'])
+@app.route('/api/db_credentials', methods=['POST']) 
 def save_create_table_queries():
     # Temporary store
     global query_store
@@ -42,7 +43,7 @@ def save_create_table_queries():
         if None in [host, port, user, password, database]:
             return jsonify({"error": "Missing database credentials"}), 400
 
-        created_table_queries = get_all_create_table_queries(
+        created_table_queries = get_all_create_table_queries( #string
             host, port, database, user, password)
         print("FUNCTION CAME HERE")
 
@@ -80,6 +81,10 @@ def generate_sql_query():
         query_store['sql_query'] = sql_query
 
         print("SQL QUERY", sql_query)
+
+        db = NL2SQLDatabase('LocalDB/history.db')
+        db.add_record(question, sql_query)
+
         return jsonify({"sqlQuery": sql_query}), 200
 
     except Exception as e:

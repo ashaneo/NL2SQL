@@ -1,93 +1,3 @@
-# import mysql.connector
-# from mysql.connector import Error
-
-
-# def connect_to_db(host, port, dbname, user, password):
-#     try:
-#         conn = mysql.connector.connect(
-#             host=host,
-#             port=port,
-#             database=dbname,
-#             user=user,
-#             password=password
-#         )
-#         if conn.is_connected():
-#             cursor = conn.cursor()
-#             return conn, cursor
-#     except Error as e:
-#         print("Error while connecting to MySQL", e)
-#         return None, None
-
-
-# def get_all_table_names(cursor):
-#     try:
-#         cursor.execute("SHOW TABLES")
-#         tables = cursor.fetchall()
-#         table_names = [table[0] for table in tables]
-#         return table_names
-#     except Error as e:
-#         print("Error fetching table names", e)
-#         return []
-
-
-# def format_create_table_query(original_query):
-#     """ Format the CREATE TABLE query to have column names quoted. """
-#     parts = original_query.split("`")
-#     formatted_parts = []
-#     for i, part in enumerate(parts):
-#         if i % 2 == 1:  # Column and table names are enclosed in backticks in the original SQL
-#             formatted_parts.append(f'"{part}"')
-#         else:
-#             formatted_parts.append(part.replace(
-#                 "CREATE TABLE", "CREATE TABLE"))
-#     return ''.join(formatted_parts)
-
-
-# def get_create_table_query(cursor, table_name):
-#     try:
-#         cursor.execute(f"SHOW CREATE TABLE `{table_name}`")
-#         create_table_query = cursor.fetchone()[1]
-#         formatted_query = format_create_table_query(create_table_query)
-#         return formatted_query
-#     except Error as e:
-#         print(f"Error fetching CREATE TABLE query for table {table_name}", e)
-#         return None
-
-
-# def get_all_create_table_queries(host, port, dbname, user, password):
-#     conn, cursor = connect_to_db(host, port, dbname, user, password)
-#     if conn is None or cursor is None:
-#         return ""
-
-#     table_names = get_all_table_names(cursor)
-#     create_table_queries = []
-
-#     for table_name in table_names:
-#         create_query = get_create_table_query(cursor, table_name)
-#         if create_query:
-#             create_table_queries.append(create_query + ";")
-
-#     cursor.close()
-#     conn.close()
-#     return " ".join(create_table_queries)
-
-
-# # This is only to test this script INdividually
-# if __name__ == "__main__":
-#     # Database credentials
-#     host = '127.0.0.1'
-#     port = '3306'
-#     dbname = 'small_schema'
-#     user = 'root'
-#     password = '12345678'
-
-#     # Get queries
-#     create_table_queries = get_all_create_table_queries(
-#         host, port, dbname, user, password)
-
-#     # Print all  queries
-#     print(create_table_queries)
-
 import mysql.connector
 from mysql.connector import Error
 
@@ -123,7 +33,7 @@ def get_all_table_names(cursor):
 def get_table_structure(cursor, table_name):
     print(f"Fetching structure for table {table_name}")
     try:
-        cursor.execute(f"DESCRIBE `{table_name}`")
+        cursor.execute(f"DESCRIBE `{table_name}`")         
         columns = cursor.fetchall()
         column_info = {}
         for column in columns:
@@ -184,7 +94,7 @@ def get_all_create_table_queries(host, port, dbname, user, password):
     table_names = get_all_table_names(cursor)
 
     print(table_names)
-
+    
     all_table_structures = {}
 
     for table_name in table_names:
